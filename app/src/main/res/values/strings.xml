@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ActivityLifecycleApp</string>
+    <string name="visibility_time_default">Visibility Time\n00:00:00</string>
+    <string name="focus_time_default">Focus Time\n00:00:00</string>
+    <string name="life_time_default">Life Time\n00:00:00</string>
 </resources>
