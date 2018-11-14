@@ -1,14 +1,9 @@
 package nl.spijkerman.ivo.activitylifecycleapp;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.time.Duration;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +18,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            lifeTime = savedInstanceState.getInt("lifeTime");
+            visibilityTime = savedInstanceState.getInt("visibilityTime");
+            focusTime = savedInstanceState.getInt("focusTime");
+        }
+
         showTimes();
         startTimer();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("lifeTime", lifeTime);
+        outState.putInt("visibilityTime", visibilityTime);
+        outState.putInt("focusTime", focusTime);
     }
 
     private void startTimer() {
@@ -73,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         return String.format("%d:%02d:%02d", hours, minutes, seconds);
     }
-
-
 
     private void incrementTimes() {
 
